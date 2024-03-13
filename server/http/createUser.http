@@ -1,9 +1,9 @@
-POST http://localhost:5000/api/sign-up HTTP/1.1
+POST http://localhost:5000/api/users/sign-up HTTP/1.1
 Content-Type: application/json
 
 {
-    "firstName": "Kate",
+    "firstName": "Nick",
     "lastName": "Braun",
-    "email": "katejd@kjdh.jd",
-    "password": "pass21"
+    "email": "nickjd@kjdh.jd",
+    "password": "pass"
 }
