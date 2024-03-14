@@ -21,7 +21,7 @@ module.exports.signIn= async (req, res, next) => {
     try {
          //   1. Приймаємоінформацію юзера
          const {body: {email, password}} = req;
-         //   2. Знаходимо юзера в БД за певним фільтром, що міститься в запиті(напр, мейл)
+         //   2. Знаходимо юзера в БД за певним фільтром, що містgoиться в запиті(напр, мейл)
          const foundUser = await User.findOne({
             email
          });
