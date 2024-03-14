@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import SignInForm from '../../components/SignInForm';
 import SignUpForm  from '../../components/SignUpForm';
 import styles from './Home.module.css';
+import history from '../../history';
 
 
 const Home = (props) => {
@@ -15,6 +16,8 @@ const Home = (props) => {
     const sendData  = (data) => {
         console.log(data);
         props.setUser(data);
+        //після оновлення даних у стейті App - хочемо автоматично перенаправити користувача на дашборд
+        history.push('/messenger')
     }
    
 
