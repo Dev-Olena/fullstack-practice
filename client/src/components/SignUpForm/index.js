@@ -1,9 +1,9 @@
 import React from 'react';
 import { useFormik } from 'formik';
 import {format} from 'date-fns';
-
 import CustomField from '../CustomField';
 import styles from '../../pages/Home/Home.module.css';
+import { signUp } from '../../api/index';
 
 const SignUpForm = (props) => {
     const formik = useFormik({
@@ -16,7 +16,11 @@ const SignUpForm = (props) => {
             imagePath: ''
         },
         onSubmit: values => {
-            console.log(values)
+            signUp(values)
+            .then(res => {
+                props.sendCallback(res)
+            })
+            
         }
     })
     return (
@@ -26,8 +30,8 @@ const SignUpForm = (props) => {
         className={styles.form}>
             <CustomField type='text' name='firstName' formik={formik} placeholder='Type your first name'/>
             <CustomField type='text' name='lastName' formik={formik} placeholder='Type your last name'/>
-            <CustomField type='email' name='email' formik={formik} />
-            <CustomField type='password' name='password' formik={formik} />
+            <CustomField type='email' name='email' formik={formik} placeholder='Type your email'/>
+            <CustomField type='password' name='password' formik={formik} placeholder='Type your password'/>
             <CustomField type='date' name='birthday' formik={formik} />
             <CustomField type='file' name='imagePath' formik={formik} />
             <button type='submit'>Submit form</button>

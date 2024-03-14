@@ -1,10 +1,10 @@
-import React, {useEffect, useState} from 'react';
+import React, {useState} from 'react';
 import SignInForm from '../../components/SignInForm';
 import SignUpForm  from '../../components/SignUpForm';
 import styles from './Home.module.css';
 
 
-const Home = () => {
+const Home = (props) => {
     const [formView, setView] = useState(true);
  
 
@@ -12,17 +12,22 @@ const Home = () => {
         setView(!formView);
     };
 
-
+    const sendData  = (data) => {
+        console.log(data);
+        props.setUser(data);
+    }
    
 
     const btnText = formView ? 'Sign Up' : 'Sign In';
 
     return (
-        <main className={styles['form-container']}>
+        <main>
             <button onClick={changeView}>{btnText}</button>
-            {formView ? 
-            <SignInForm /> 
-            : <SignUpForm />}
+            <section className={styles['form-container']}>
+                {formView ? 
+                <SignInForm sendCallback={sendData}/> 
+                : <SignUpForm sendCallback={sendData}/>}
+            </section>
         </main>
         
     );
