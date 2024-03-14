@@ -1,7 +1,8 @@
 const bcrypt = require('bcrypt');
 const {User} = require('../models');
 const {deletePassword} = require('../utils/deletePassword');
-const {createToken} = require('../service/tokenService');
+const {createTokenPair} = require('../service/tokenService');
+const {verifyRefreshToken} = require('../service/tokenService');
 
 
 module.exports.signUp = async (req, res, next) => {
@@ -10,8 +11,8 @@ module.exports.signUp = async (req, res, next) => {
         const createdUser = await User.create(body); 
         const readyUser = deletePassword(createdUser)
         // перед тим, як повертати юзера, треба з об'єкта видалити пароль
-        const token = await createToken(readyUser.id, readyUser.email);
-        res.status(201).send({data: readyUser, token});
+        const tokens = await createTokenPair(readyUser.id, readyUser.email);
+        res.status(201).send({data: readyUser, tokens});
     } catch(error) {
          next(error)
     }
@@ -37,9 +38,20 @@ module.exports.signIn= async (req, res, next) => {
                 throw new Error('Invalid data');
             }
          //   4. Якщо пароль співпав - створюємо сесію юзера і генеруємо для нього токен для всіх подальших запитів
-            const token = await createToken(foundUser.id, foundUser.email);
-            res.status(200).send({data: deletePassword(foundUser), token})
+            const tokens = await createTokenPair(foundUser.id, foundUser.email);
+            res.status(200).send({data: deletePassword(foundUser), tokens})
           //      Всі наступні (подальші) запити мають приходити з цим виданим токеном
+    } catch (error) {
+        next(error)
+    }
+};
+
+module.exports.refreshSession = async (req, res, next) => {
+    try {
+        const {body: {refreshToken}} = req;
+        const payload = await verifyRefreshToken(refreshToken);
+        const tokenPair = await createTokenPair(payload);
+        res.status(200).send({tokens: tokenPair})
     } catch (error) {
         next(error)
     }
