@@ -2,8 +2,8 @@ POST http://localhost:5000/api/users/sign-up HTTP/1.1
 Content-Type: application/json
 
 {
-    "firstName": "Nick",
-    "lastName": "Norton",
-    "email": "norld@kjdh.jd",
+    "firstName": "Nork",
+    "lastName": "Santon",
+    "email": "sald@kjdh.jd",
     "password": "pass"
 }
