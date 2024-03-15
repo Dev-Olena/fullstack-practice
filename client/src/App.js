@@ -3,6 +3,8 @@ import {Router, Switch, Route} from 'react-router-dom';
 import history from './history';
 import Home from "./pages/Home";
 import Dashboard from "./pages/Dashboard";
+import './reset.css';
+
 
 function App() {
   const [user, setUser] = useState(null);

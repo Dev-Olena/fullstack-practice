@@ -1,0 +1,15 @@
+.dashboard-container {
+    display: flex;
+    flex-direction: row;
+    width: 100vw;
+    height: 98vh;
+    box-sizing: border-box;
+}
+
+.messenger {
+    width: 80%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
