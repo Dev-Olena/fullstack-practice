@@ -1,5 +1,4 @@
 import axios from 'axios';
-import history from '../history';
 
 const httpClient = axios.create({
     baseURL: 'http://localhost:5000/api'
@@ -48,7 +47,6 @@ httpClient.interceptors.response.use((response)=> {
     } else if (error.response.status === 401) {
         logOut();
         /// перекидаємо юзера на сторінку авторизації
-        history.replace('/');
     }
 
 })
