@@ -11,6 +11,7 @@ const Dialoglist = (props) => {
         getUserChats()
         .then(res => {
             setList(res.data.data)
+
         })
     }, [])
     

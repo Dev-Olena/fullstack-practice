@@ -70,4 +70,18 @@ module.exports.getAllUserChat = async (req, res, next) => {
     } catch (error) {
         next (error)
     }
-}
+};
+
+module.exports.getOneChat = async (req, res, next) => {
+    try {
+        const {params: {chatId}} = req;
+        const foundChat= await Chat.findById(chatId);
+        if (!foundChat) {
+            throw new Error('Chat not found')
+        };
+        res.status(200).send({data: foundChat})
+
+    } catch (error) {
+        next(error)
+    }
+};
