@@ -1,0 +1,8 @@
+POST http://localhost:5000/api/chats/65f81513f89f5490b389263d HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NWYyYmQyYWM5MzI3MzA1ZGQwM2JhN2QiLCJlbWFpbCI6Im5vcmxkQGtqZGguamQiLCJpYXQiOjE3MTA3Njc3NTIsImV4cCI6MTcxMDc2Nzg3Mn0.wyiqSqh31AquXhjECvbrgGwsrMgZ_0xd7g0YvIlgxJ0
+
+{
+    "author": "65f429f42c9c087f436c97d0",
+    "body": "important message"
+}

@@ -33,6 +33,6 @@
     background-color: rgb(120, 175, 120);
     cursor: pointer;
 }
-/* .current-chat-item {
-    background-color: rgb(204, 248, 155);
-} */
+.current-chat-item {
+    background-color: #b5d48ccb;
+}

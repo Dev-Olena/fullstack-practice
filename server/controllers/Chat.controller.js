@@ -15,7 +15,7 @@ module.exports.addMessage = async (req, res, next) => {
         const {body, params: {chatId}} = req;
         const newMessageInstanse = await Message.create({...body, chat: chatId});
         const chatInstanse = await Chat.findById(chatId);
-        chatInstanse.message.push(newMessageInstanse);
+        chatInstanse.messages.push(newMessageInstanse);
         await chatInstanse.save();
         res.status(201).send({data: newMessageInstanse});
     } catch(error) {
@@ -75,7 +75,7 @@ module.exports.getAllUserChat = async (req, res, next) => {
 module.exports.getOneChat = async (req, res, next) => {
     try {
         const {params: {chatId}} = req;
-        const foundChat= await Chat.findById(chatId);
+        const foundChat= await Chat.findById(chatId).populate('members').populate('messages');
         if (!foundChat) {
             throw new Error('Chat not found')
         };
