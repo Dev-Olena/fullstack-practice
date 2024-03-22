@@ -14,13 +14,13 @@ module.exports.signUp = async (req, res, next) => {
         // перед тим, як повертати юзера, треба з об'єкта видалити пароль
         //створюємо сесію юзера
         const tokens = await createTokenPair({
-            userId: readyUser._id, 
+            userId: readyUser.id, 
             email: readyUser.email
         });
         //зберігаємо RT до БД
         const add = await RefreshToken.create({
             token: tokens.refreshToken,
-            userId: readyUser._id
+            userId: readyUser.id
         })
         res.status(201).send({data: readyUser, tokens});
     } catch(error) {
@@ -47,6 +47,7 @@ module.exports.signIn= async (req, res, next) => {
             if(!result) {
                 throw new Error('Invalid data');
             }
+            console.log(foundUser);
          //   4. Якщо пароль співпав - створюємо сесію юзера і генеруємо для нього токен для всіх подальших запитів
             const tokens = await createTokenPair({userId: foundUser._id, email: foundUser.email});
              //зберігаємо RT до БД
@@ -111,6 +112,19 @@ module.exports.refreshSession = async (req, res, next) => {
             }
         }
        catch (error) {
+        next(error)
+    }
+}
+
+module.exports.getUserData = async (req, res, next) => {
+    try {
+        const {payload: {userId}} = req;
+        const foundUser = await User.findById(userId);
+        if (!foundUser) {
+            throw new Error('User not found'); 
+        }
+        res.status(200).send({data: foundUser})
+    } catch (error) {
         next(error)
     }
 }

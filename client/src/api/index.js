@@ -68,6 +68,12 @@ export const logOut = async () => {
 
 // Chat API
 
-export const getUserChats = async () => await httpClient.get('/chats')
+export const getUserChats = async () => await httpClient.get('/chats');
 
-export const getOneChat = async (chatId) => await httpClient.get(`/chats/${chatId}`)
+export const getOneChat = async (chatId) => await httpClient.get(`/chats/${chatId}`);
+
+export const addMessage = async ({chatId, data}) => await httpClient.post(`/chats/${chatId}`, data);
+
+//User API
+
+export const getUserData = async () => await httpClient.get('/users/');
