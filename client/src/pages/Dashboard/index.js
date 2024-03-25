@@ -4,9 +4,9 @@ import Chat from '../../components/Chat';
 import Dialoglist from '../../components/Dialoglist';
 import MessageArea from '../../components/MessageArea';
 import styles from './Dashboard.module.css';
-import ChatContext from '../../contexts/ChatContext';
+// import ChatContext from '../../contexts/ChatContext';
 import {addMessage} from '../../api/index';
-import UserContext from '../../contexts/UserContext';
+// import UserContext from '../../contexts/UserContext';
 import { addNewMessage } from '../../actions/actionCreators';
 
 
@@ -38,7 +38,7 @@ const Dashboard = (props) => {
     }
 
     return (
-        <ChatContext.Provider value={[currentChat, setCurrentChat]} >
+        // <ChatContext.Provider value={[currentChat, setCurrentChat]} >
             <main className={styles['dashboard-container']}>
                 <Dialoglist />
                 <section className={styles.messenger}>
@@ -46,7 +46,7 @@ const Dashboard = (props) => {
                     <MessageArea sendData={sendMessage}/>
                 </section>
             </main>
-        </ChatContext.Provider>
+        // </ChatContext.Provider>
     );
 }
 
