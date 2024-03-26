@@ -1,26 +1,38 @@
 import React, {useState, useEffect} from 'react';
+import {connect} from 'react-redux';
 import styles from './Dialoglist.module.css';
-import {getUserChats} from '../../api/index';
+// import {getUserChats} from '../../api/index';
 import ListItem from './ListItem';
+import {getUserChatsList} from '../../actions/actionCreators';
 
 
 const Dialoglist = (props) => {
-    const [list, setList] = useState();
+    // const [list, setList] = useState();
 
-    useEffect(() => {
-        getUserChats()
-        .then(res => {
-            setList(res.data.data)
+    // useEffect(() => {
+    //     getUserChats()
+    //     .then(res => {
+    //         setList(res.data.data)
 
-        })
-    }, [])
-    
+    //     })
+    // }, [])
+
+    useEffect(getUserChatsList, []);
+
+    const {chatList} = props;
+
     return (
         <section className={styles.dialoglist}>
             <header className={styles.header}>Chat List</header>
-            {list && list.map(chat => <ListItem chat={chat} key={chat._id}/>)}
+            {chatList && chatList.map(chat => <ListItem chat={chat} key={chat._id}/>)}
         </section>
     );
 }
 
-export default Dialoglist ;
+
+const mapStateToProps = ({chatList}) => ({chatList});
+const mapDispatchToProps = {
+    getUserChatsList
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Dialoglist);

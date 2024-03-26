@@ -4,7 +4,8 @@ import {produce} from 'immer';
 const initialStates = {
     user: null,
     currentChat: [],
-    error: null
+    error: null,
+    chatList: []
   };
 
 
