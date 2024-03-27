@@ -13,10 +13,17 @@ const initialStates = {
 function reducer (state = initialStates, action) {   // Pure function!
     console.log(action);
     switch(action.type) {
+      case ACTION_TYPES.SIGN_IN_SUCCESS: {
+        return {
+          ...state,
+          user: action.payload
+        }
+      }
+      
       case ACTION_TYPES.GET_USER_DATA_SUCCESS: {
           return {
               ...state,
-              isFetching: true,
+              isFetching: false,
               user: action.payload
           }
       };
@@ -39,18 +46,19 @@ function reducer (state = initialStates, action) {   // Pure function!
       case ACTION_TYPES.GET_USER_CHATS_LIST_SUCCESS: {
         return {
           ...state,
-          isFetching: true,
+          isFetching: false,
           chatList: action.payload
         }
       };
 
-
+      case ACTION_TYPES.SIGN_IN_ERROR:
+      case ACTION_TYPES.SIGN_UP_ERROR:
       case ACTION_TYPES.ADD_NEW_MESSAGE_ERROR:
       case ACTION_TYPES.GET_USER_DATA_ERROR:
       case ACTION_TYPES.GET_USER_CHATS_LIST_ERROR: {
         return {
           ...state,
-          isFetching: true,
+          isFetching: false,
           error: action.error
         }
       }

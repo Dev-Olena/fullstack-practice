@@ -1,8 +1,10 @@
 import React from 'react';
 import {useFormik} from 'formik';
+import { connect } from 'react-redux';
 import CustomField from '../CustomField';
 import styles from '../../pages/Home/Home.module.css';
-import {signIn} from '../../api/index';
+// import {signIn} from '../../api/index';
+import {signInRequest} from '../../actions/actionCreators'
 
 const SignInForm = (props) => {
     const formik = useFormik({
@@ -11,11 +13,12 @@ const SignInForm = (props) => {
             password: ''
         },
         onSubmit: values => {
-            signIn(values)
-            .then(res => {
-                props.sendCallback(res)
-            })
-            
+            // signIn(values)
+            // .then(res => {
+            //     props.sendCallback(res)
+            // })
+            // Тепер з Saga відправляємо тільки action
+            props.signInRequest(values)
         }
     })
     return (
@@ -43,4 +46,8 @@ const SignInForm = (props) => {
     );
 }
 
-export default SignInForm ;
+const mapDispatch = {
+    signInRequest
+} 
+
+export default connect(null, mapDispatch)(SignInForm);

@@ -7,7 +7,7 @@ import styles from './Dashboard.module.css';
 // import ChatContext from '../../contexts/ChatContext';
 import {addMessage} from '../../api/index';
 // import UserContext from '../../contexts/UserContext';
-import { addNewMessage } from '../../actions/actionCreators';
+import { addNewMessageRequest } from '../../actions/actionCreators';
 
 
 const Dashboard = (props) => {
@@ -23,7 +23,7 @@ const Dashboard = (props) => {
             }
         };
 
-        props.addMessage(apiObj);
+        props.addNewMessageRequest(apiObj);
         // props.dispatch(addMessage(apiObj)); 
 
 
@@ -61,7 +61,7 @@ const mapStateToProps = ({user, currentChat}) => ({user, currentChat})
 // }
 /////////////або
 const mapDispatchToProps = {
-    addMessage: addNewMessage
+    addNewMessageRequest
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Dashboard)

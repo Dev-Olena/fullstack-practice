@@ -17,7 +17,7 @@ const Dialoglist = (props) => {
     //     })
     // }, [])
 
-    useEffect(getUserChatsList, []);
+    useEffect(props.getUserChatsList(), []);
 
     const {chatList} = props;
 
