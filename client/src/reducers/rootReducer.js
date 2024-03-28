@@ -52,9 +52,22 @@ function reducer (state = initialStates, action) {   // Pure function!
       };
 
       case ACTION_TYPES.GET_CURRENT_CHAT_SUCCESS: {
+        /// Ось тут в редьюсері ми можемо робити будь-які СИНХРОННІ перетворення даних
+        const currentChat = action.payload;
+        const userMap = new Map();
+        currentChat.members.forEach((user) => {
+            userMap.set(user._id, user);
+        });
+        const mapped = currentChat.messages.map((message) => {
+          message.author = userMap.get(message.author);
+          return message
+        })
         return {
           ...state,
-          currentChat: action.payload
+          currentChat: {
+            ...currentChat,
+            messages: mapped
+          }
         }
       }
 

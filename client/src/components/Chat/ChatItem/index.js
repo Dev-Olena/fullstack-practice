@@ -10,12 +10,13 @@ const ChatItem = (props) => {
     
 
     const cnames = cx(styles['message-container'], {
-        [styles['current-user-message']]: author === props.user?._id
+        [styles['current-user-message']]: author._id === props.user?._id
     })
     return (
         <div className={cnames}>
             <p className={styles['message-author']}>
-                {author}
+                {author.firstName} 
+                {author.lastName}
             </p>
             <p>
                 {body}
