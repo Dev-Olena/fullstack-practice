@@ -1,15 +1,16 @@
 import React, {useContext} from 'react';
-import UserContext from '../../../contexts/UserContext';
+import {connect} from 'react-redux';
+// import UserContext from '../../../contexts/UserContext';
 import styles from '../Chat.module.css';
 import cx from 'classnames';
 
 const ChatItem = (props) => {
-    const user = useContext(UserContext);
+    // const user = useContext(UserContext);
     const {author, body} = props.data;
     
 
     const cnames = cx(styles['message-container'], {
-        [styles['current-user-message']]: author === user?._id
+        [styles['current-user-message']]: author === props.user?._id
     })
     return (
         <div className={cnames}>
@@ -23,4 +24,6 @@ const ChatItem = (props) => {
     );
 }
 
-export default ChatItem ;
+const mapState = ({user}) => ({user});
+
+export default connect(mapState)(ChatItem);

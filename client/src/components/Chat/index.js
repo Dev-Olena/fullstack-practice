@@ -2,7 +2,7 @@ import React, {useContext, useEffect, useState, useRef} from 'react';
 import {connect} from 'react-redux';
 import styles from './Chat.module.css';
 // import ChatContext from '../../contexts/ChatContext';
-import {getOneChat} from '../../api/index';
+// import {getOneChat} from '../../api/index';
 import ChatItem from './ChatItem/index';
 
 const Chat = (props) => {
@@ -27,7 +27,7 @@ const Chat = (props) => {
     return (
         <section className={styles.chat}>
             {/* {chatStory && chatStory.map(message => <ChatItem data={message} key={message._id}/>)} */}
-            {props.currentChat.messages.map(message => <ChatItem data={message} key={message._id}/>)}
+            {props.currentChat?.messages?.map(message => <ChatItem data={message} key={message._id}/>)}
             <div ref={scrollRef}></div>
         </section>
     );

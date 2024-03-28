@@ -3,7 +3,7 @@ import {produce} from 'immer';
 
 const initialStates = {
     user: null,
-    currentChat: [],
+    currentChat: null,
     error: null,
     chatList: [],
     isFetching: false
@@ -31,7 +31,7 @@ function reducer (state = initialStates, action) {   // Pure function!
   
       case ACTION_TYPES.ADD_NEW_MESSAGE_SUCCESS: {
         const nextState = produce(state, (draft) => {
-            draft.currentChat.push(action.payload);
+            draft.currentChat.messages.push(action.payload);
         })
         return nextState;
         // return {
@@ -51,6 +51,14 @@ function reducer (state = initialStates, action) {   // Pure function!
         }
       };
 
+      case ACTION_TYPES.GET_CURRENT_CHAT_SUCCESS: {
+        return {
+          ...state,
+          currentChat: action.payload
+        }
+      }
+
+      case ACTION_TYPES.GET_CURRENT_CHAT_ERROR:
       case ACTION_TYPES.SIGN_IN_ERROR:
       case ACTION_TYPES.SIGN_UP_ERROR:
       case ACTION_TYPES.ADD_NEW_MESSAGE_ERROR:
