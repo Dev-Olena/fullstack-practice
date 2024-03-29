@@ -15,8 +15,7 @@ const ChatItem = (props) => {
     return (
         <div className={cnames}>
             <p className={styles['message-author']}>
-                {author.firstName} 
-                {author.lastName}
+                {author.firstName} {author.lastName}
             </p>
             <p>
                 {body}
