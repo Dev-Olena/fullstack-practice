@@ -5,7 +5,13 @@ const messageSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: 'User'
     },
-    body: String,
+    body: {
+        type: String,
+        required: true
+    },
+    imagePath: {
+        type: String
+    },
     status: Boolean,
     chat: {
         type: Schema.Types.ObjectId,

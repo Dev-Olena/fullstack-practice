@@ -12,8 +12,9 @@ module.exports.createChat = async (req, res, next) => {
 
 module.exports.addMessage = async (req, res, next) => {
     try {
-        const {body, params: {chatId}} = req;
-        const newMessageInstanse = await Message.create({...body, chat: chatId});
+        const {body, params: {chatId}, file} = req;
+        const newMessageInstanse = await Message.create({...body, chat: chatId, imagePath: file.filename});
+        console.log(newMessageInstanse);
         const chatInstanse = await Chat.findById(chatId);
         chatInstanse.messages.push(newMessageInstanse);
         await chatInstanse.save();
