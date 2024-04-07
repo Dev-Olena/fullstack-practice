@@ -12,8 +12,11 @@ module.exports.createChat = async (req, res, next) => {
 
 module.exports.addMessage = async (req, res, next) => {
     try {
-        const {body, params: {chatId}, file} = req;
-        const newMessageInstanse = await Message.create({...body, chat: chatId, imagePath: file.filename});
+        
+       const {body, params: {chatId}, file} = req;
+       console.log(body);
+        console.log(file)
+        const newMessageInstanse = await Message.create({...body, chat: chatId, imagePath: file?.filename});
         console.log(newMessageInstanse);
         const chatInstanse = await Chat.findById(chatId);
         chatInstanse.messages.push(newMessageInstanse);
@@ -76,7 +79,7 @@ module.exports.getAllUserChat = async (req, res, next) => {
 module.exports.getOneChat = async (req, res, next) => {
     try {
         const {params: {chatId}} = req;
-        const foundChat= await Chat.findById(chatId).populate('members').populate('messages');
+        const foundChat = await Chat.findById(chatId).populate('members').populate('messages');
         if (!foundChat) {
             throw new Error('Chat not found')
         };

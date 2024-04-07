@@ -9,7 +9,9 @@ const IMAGE_PLACEHOLDER = '/assets/icons/chat-img.png';
 
 const ListItem = (props) => {
     // const [currentChat, setCurrentChat] = useContext(ChatContext);
+
     const {chat: {members, messages, imagePath, name, _id}, currentChat} = props;
+    
     const cnames = cx(styles['list-item'], {
         [styles['current-chat-item']] : currentChat?._id === _id
     });

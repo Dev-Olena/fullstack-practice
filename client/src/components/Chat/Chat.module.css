@@ -27,3 +27,7 @@
 .current-user-message {
     align-self: flex-end;
 }
+
+.massage-image {
+    width: 70%;
+}

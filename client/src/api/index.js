@@ -76,7 +76,11 @@ export const getUserChats = async () => await httpClient.get('/chats');
 
 export const getOneChat = async (chatId) => await httpClient.get(`/chats/${chatId}`);
 
-export const addMessage = async ({chatId, data}) => await httpClient.post(`/chats/${chatId}`, data);
+export const addMessage = async ({chatId, message}) => await httpClient.post(`/chats/${chatId}`, message, {
+    headers: {
+        'Content-Type': 'multipart/form-data'
+    }
+});
 
 //User API
 

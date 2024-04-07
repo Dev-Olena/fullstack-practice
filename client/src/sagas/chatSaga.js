@@ -21,9 +21,9 @@ export function* getUserChatsSaga () {
 
 export function* getOneChatSaga(action) {
     try {
+        console.log(action.payload)
         const {data: {data}} = yield getOneChat(action.payload);
-        const actionSucess = getCurrentChatSuccess(data);
-        yield put(actionSucess)
+        yield put(getCurrentChatSuccess(data))
     } catch (error) {
         const errorAction = getCurrentChatError(error);
         yield put(errorAction)
@@ -32,6 +32,7 @@ export function* getOneChatSaga(action) {
 
 export function* addNewMessageSaga(action) {
     try {
+        console.log(action.payload);
         const {data: {data}} = yield addMessage(action.payload);
         yield put(addNewMessageSuccess(data));
     } catch (error) {

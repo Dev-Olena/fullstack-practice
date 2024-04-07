@@ -8,7 +8,8 @@ function errorReducer(state = initialStates, action) {
         case ACTION_TYPES.SIGN_UP_ERROR:
         case ACTION_TYPES.ADD_NEW_MESSAGE_ERROR:
         case ACTION_TYPES.GET_USER_DATA_ERROR:
-        case ACTION_TYPES.GET_USER_CHATS_LIST_ERROR: {
+        case ACTION_TYPES.GET_USER_CHATS_LIST_ERROR:
+        case ACTION_TYPES.GET_CURRENT_CHAT_ERROR: {
             return {
                 ...state,
                 isFetching: false,

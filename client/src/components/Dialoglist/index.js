@@ -5,6 +5,7 @@ import styles from './Dialoglist.module.css';
 import ListItem from './ListItem';
 import {getUserChatsList} from '../../actions/actionCreators';
 
+//при відкритті компонента робить запит на список діалогів юзера
 
 const Dialoglist = (props) => {
     // const [list, setList] = useState();

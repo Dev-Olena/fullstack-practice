@@ -9,6 +9,7 @@ function currentChatReducer(state = initialStates, action) {
         //     draft.currentChat.messages.push(action.payload);
         //     });
         //    return nextState;
+      
         const newMessage = action.payload;
         /// Заселяємо в нове повідомлення об'єкт юзера
         const messageAuthor = state.members.find((userObj) => userObj._id === newMessage.author);
