@@ -1,11 +1,13 @@
 import {put} from 'redux-saga/effects';
-import {getUserChats, getOneChat, addMessage} from '../api/index';
+import {getUserChats, getOneChat, addMessage, createChat} from '../api/index';
 import {getUserChatsListSuccess, 
         getUserChatsListError, 
         getCurrentChatError, 
         getCurrentChatSuccess, 
         addNewMessageSuccess, 
-        addNewMessageError} from '../actions/actionCreators';
+        addNewMessageError,
+        createChatSuccess,
+        createChatError} from '../actions/actionCreators';
 
 export function* getUserChatsSaga () {
     try {
@@ -38,4 +40,13 @@ export function* addNewMessageSaga(action) {
     } catch (error) {
         yield put(addNewMessageError(error));
     }
-}
+};
+
+export function* createChatSaga(action) {
+    try {
+        const{data: {data}} = yield createChat(action.payload);
+        yield put(createChatSuccess(data));
+    } catch (error) {
+        yield put(createChatError(error))
+    }
+};

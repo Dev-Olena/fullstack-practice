@@ -2,6 +2,10 @@
     width: 20%;
     height: 100%;
     background-color: #f8f1e7f8;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
 }
 
 .header {
@@ -17,8 +21,7 @@
     border: 1px  solid rgb(125, 216, 125);
     display: flex;
     flex-direction: row;
-    list-style-type: none;
-    justify-content: space-around;
+    justify-content: flex-start;
     box-sizing: border-box;
     align-items: center;
 }
@@ -28,6 +31,7 @@
     height: 45px;
     border-radius: 50%;
     object-fit: cover;
+    margin: 0 5%;
 }
 .list-item:hover {
     background-color: rgb(120, 175, 120);
@@ -35,4 +39,15 @@
 }
 .current-chat-item {
     background-color: #b5d48ccb;
+}
+
+.footer {
+    margin-top: auto;
+    border: 1px solid rgb(120, 175, 120);
+    color: rgb(120, 175, 120);
+    font-size: 1.3em;
+    font-weight: 700;
+    padding: 0.7em 0;
+    text-align: center;
+    cursor: pointer;
 }

@@ -90,4 +90,18 @@ export const getCurrentChatError = (error) => ({
 });
 
 
+export const createChatRequest = (payload) => ({
+    type: ACTION_TYPES.CREATE_CHAT_REQUEST,
+    payload
+});
+export const createChatSuccess = (payload) => ({
+    type: ACTION_TYPES.CREATE_CHAT_SUCCESS,
+    payload
+});
+export const createChatError = (error) => ({
+    type: ACTION_TYPES.CREATE_CHAT_ERROR,
+    error
+})
+
+
 

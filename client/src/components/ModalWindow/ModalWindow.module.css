@@ -1,0 +1,30 @@
+.back-wrapper {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left:0;
+    right: 0;
+    background-color: rgba(56, 55, 55, 0.788);
+    z-index: 2;
+}
+.modal-window {
+    position: fixed;
+    top: 40%;
+    left: 40%;
+    z-index: 3;
+    background-color: beige;
+    width: 20vw;
+    /* height: 20vh; */
+    padding: 2%;
+}
+
+.close-icon {
+    position: absolute;
+    top: 3%;
+    right: 3%;
+    cursor: pointer;
+}
+.form-title {
+    text-align: center;
+    margin-bottom: 10px;
+}

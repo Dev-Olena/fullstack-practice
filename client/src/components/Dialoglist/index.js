@@ -24,10 +24,15 @@ const Dialoglist = (props) => {
 
     const {chatList} = props;
 
+    const openModal = () => {
+        props.openModal(true);
+    }
+
     return (
         <section className={styles.dialoglist}>
             <header className={styles.header}>Chat List</header>
             {chatList && chatList.map(chat => <ListItem chat={chat} key={chat._id}/>)}
+            <footer className={styles.footer} onClick={openModal}>+ Add new chat</footer>
         </section>
     );
 }
