@@ -6,6 +6,7 @@ import errorReducer from './errorReducer';
 import chatListReducer from "./chatListReducer";
 import currentChatReducer from "./currentChatReducer";
 import fetchingReducer from "./fetchingReducer";
+import notificationReducer from "./notifocationReducer";
 
 const initialStates = {
     user: null,
@@ -20,7 +21,8 @@ const rootReducer = combineReducers({
   chatList: chatListReducer,
   currentChat: currentChatReducer,
   error: errorReducer,
-  isFetching: fetchingReducer
+  isFetching: fetchingReducer,
+  notification: notificationReducer
 });
 
 // function reducer (state = initialStates, action) {   // Pure function!
